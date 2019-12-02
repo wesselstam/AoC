@@ -1,0 +1,13 @@
+{
+    "name": "wesselstam/advent",
+    "authors": [
+        {
+            "name": "Wessel Stam",
+            "email": "info@wesselstam.nl"
+        }
+    ],
+    "require": {},
+    "require-dev": {
+        "symfony/var-dumper": "^5.0"
+    }
+}
