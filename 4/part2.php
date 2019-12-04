@@ -4,7 +4,8 @@ $passwordLength = 6;
 
 function testPassword($password): bool
 {
-    if (strlen($password) != 6) {
+    // Obvious, but true...
+    if (strlen($password) !== 6) {
         return false;
     }
 
@@ -18,7 +19,7 @@ function testPassword($password): bool
     // One of the matches needs to be a pair of 2
     $foundPairOfTwo = false;
     foreach ($numberGroups[0] as $match) {
-        if (strlen($match) == 2) {
+        if (strlen($match) === 2) {
             $foundPairOfTwo = true;
         }
     }
@@ -26,20 +27,12 @@ function testPassword($password): bool
         return false;
     }
 
-    $lastChar = false;
     $passwordLength = strlen($password);
 
     for ($x = 0; $x < $passwordLength; $x++) {
-        if (!$lastChar) {
-            $lastChar = $password{$x};
-            continue;
-        }
-
-        if ($password{$x} < $lastChar) {
+        if ($x > 0 && $password{$x} < $password{$x-1}) {
             return false;
         }
-
-        $lastChar = $password{$x};
     }
 
     return true;
